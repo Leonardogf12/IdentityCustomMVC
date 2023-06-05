@@ -24,7 +24,7 @@ namespace IdentityCustomMVC.Controllers
 
         #region GETS
 
-        [AllowAnonymous]
+        
         public async Task<IActionResult> Index()
         {
             return _context.Products != null ?
@@ -32,7 +32,7 @@ namespace IdentityCustomMVC.Controllers
                         Problem("Entity set 'AppDbContext.Products'  is null.");
         }
 
-        [AllowAnonymous]
+        
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Products == null)
@@ -50,13 +50,13 @@ namespace IdentityCustomMVC.Controllers
             return View(product);
         }
 
-        [Authorize(Roles = "Master")]
+        [Authorize(Roles = "Master, Admin, Gerente")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [Authorize(Roles = "Master")]
+        [Authorize(Roles = "Master, Admin, Gerente")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Products == null)
@@ -72,7 +72,7 @@ namespace IdentityCustomMVC.Controllers
             return View(product);
         }
 
-        [Authorize(Roles = "Master")]
+        [Authorize(Roles = "Master, Admin, Gerente")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Products == null)

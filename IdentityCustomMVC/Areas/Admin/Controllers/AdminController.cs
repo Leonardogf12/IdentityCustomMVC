@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IdentityCustomMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin, Master")]
+    [Authorize(Roles = "Master")]
     public class AdminController : Controller
     {
         public IActionResult Index()

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace IdentityCustomMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles ="Admin, Master")]
+    [Authorize(Roles ="Master")]
     public class AdminUserController : Controller
     {
         private UserManager<IdentityUser> userManager;

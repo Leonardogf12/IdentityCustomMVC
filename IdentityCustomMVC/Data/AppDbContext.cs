@@ -1,4 +1,5 @@
 ﻿using IdentityCustomMVC.Entities;
+using IdentityCustomMVC.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +14,14 @@ namespace IdentityCustomMVC.Data
 
         public DbSet<Product> Products { get; set; }
 
+        //public DbSet<User> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
             base.OnModelCreating(builder);
            
+            //*PRODUTO INICIAL.
             builder.Entity<Product>().HasData(new Product
             {
                 Id = 1,
@@ -25,7 +29,7 @@ namespace IdentityCustomMVC.Data
                 Description = "Teclado Logitech G213",
 
             });
-
+           
         }
 
         #region CONFIGURACAO DA STRING DE CONEXAO NECESSARIA POIS ESTOU HERDANDO ( AppDbContext : IdentityDbContext<User> )_ .

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "OxtMAjsdmIUQzaZNqEgN1ceWUX78YHGFUKaEHKhU/e3FyyM3d674yDFAZ1k7Hs0l+nYBrFiFB9ov1ECIru8eiw==",
+  "dgSpecHash": "d9jgu/Brug3FzR1r9zsBcGmNRwm1of3ZdxLHbgPYOxZdTLGOxhkPI6GtKK24DmhH4FR89xKgv//xJnnWHa6QNA==",
   "success": true,
-  "projectFilePath": "D:\\PROJETOS\\IdentityCustomMVC\\IdentityCustomMVC\\IdentityCustomMVC.csproj",
+  "projectFilePath": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\IdentityCustomMVC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\root\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\root\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

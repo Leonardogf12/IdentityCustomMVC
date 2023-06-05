@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 namespace IdentityCustomMVC.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "Admin, Master")]
+    [Authorize(Roles = "Master")]
     public class AdminRolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -43,8 +43,9 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
             List<IdentityUser> members = new List<IdentityUser>();
             List<IdentityUser> nonMembers = new List<IdentityUser>();
 
-            foreach (IdentityUser user in _userManager.Users)
+            foreach (IdentityUser user in _userManager.Users.ToList())
             {
+               
                 var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
 
                 list.Add(user);
@@ -88,7 +89,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
                     Errors(result);
             }
 
-            return View("Index");
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

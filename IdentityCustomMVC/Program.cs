@@ -1,8 +1,10 @@
 using IdentityCustomMVC.Data;
+using IdentityCustomMVC.Entities;
 using IdentityCustomMVC.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Razor.Language.Intermediate;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +20,6 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connecti
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
                         .AddEntityFrameworkStores<AppDbContext>();
-
 #endregion
 
 #region INJECAO DE DEPENDENCIAS, REGISTROS.
