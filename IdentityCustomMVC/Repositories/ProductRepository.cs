@@ -18,12 +18,7 @@ namespace IdentityCustomMVC.Repositories
         {            
             using (var db = new AppDbContext(_context))
             {                              
-                var idd = db.Products.Any(e => e.Id == Id);
-
-                if (idd)
-                    return true;
-                else
-                    return false;
+                return (db.Products.Any(e => e.Id == Id)) == true ? true : false;               
             }
         }
     }

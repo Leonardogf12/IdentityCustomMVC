@@ -5,14 +5,17 @@
 @inject UserManager<ApplicationUser> userManager
 
 @if (SignInManager.IsSignedIn(User))
-{  
-    <p>Bem Vindo, <b>@User.Identity.Name</b></p>
-    <ul class="nav-item">
+{
+    <p>Bem Vindo, <b>&nbsp;@User.Identity.Name</b>  </p>
+    <ul class="btn-group">
         <form method="post" asp-controller="account" asp-action="logout">
-            <button type="submit" class="nav-link btn btn-link py-0" style="width:auto">
+            <button type="submit" class="nav-link btn btn-link" style="width:auto">
                Sair
             </button>
         </form>
+   
+        <a class="nav-link" asp-controller="account" asp-action="ChangePassword">Alterar Senha</a>
+
     </ul>
 }
 else

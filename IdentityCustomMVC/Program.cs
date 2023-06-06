@@ -35,6 +35,9 @@ builder.Services.AddSingleton(typeof(IGeneric<>), typeof(GenericRepository<>));
 //*INTERFACE DE PRODUTO.
 builder.Services.AddScoped<IProduct, ProductRepository>();
 
+//*INTERFACE DE USUARIO.
+builder.Services.AddScoped<IUser, UserRepository>();
+
 #endregion
 
 // Add services to the container.

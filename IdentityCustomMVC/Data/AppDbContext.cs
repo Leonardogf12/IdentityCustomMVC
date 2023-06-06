@@ -51,6 +51,8 @@ namespace IdentityCustomMVC.Data
             return "server=localhost;userid=root;password=123456;database=identitycustommvcoficial";
         }
 
+        public DbSet<IdentityCustomMVC.Models.ChangePasswordViewModel> ChangePasswordViewModel { get; set; } = default!;
+
         #endregion
     }
 }
