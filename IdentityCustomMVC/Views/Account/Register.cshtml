@@ -1,32 +1,85 @@
 ﻿@model RegisterViewModel
 
 @{
-    ViewBag.Title = "Registro de Usuário";
+    ViewBag.Title = "Novo Usuário";
 }
 
-<h3>Registrar Usuário</h3>
-<div class="row">
-    <div class="col-md-12">
-        <form method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group col-md-3">
-                <label asp-for="Email"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+<div class="container">
+    <h1 class="text-center mb-5">@ViewBag.Title</h1>
+    <div class="card">
+        <div class="card-body">
+            <div class="col-md-12">
+                <form method="post">
+                    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                    
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="Name"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="Cpf"></label>
+                            <input asp-for="Cpf" class="form-control" />
+                            <span asp-validation-for="Cpf" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label asp-for="BirthDate"></label>
+                            <input asp-for="BirthDate" class="form-control" type="date" />
+                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-2">
+                            <label asp-for="Cep"></label>
+                            <input asp-for="Cep" class="form-control" type="number" />
+                            <span asp-validation-for="Cep" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label asp-for="Address"></label>
+                            <input asp-for="Address" class="form-control" />
+                            <span asp-validation-for="Address" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="form-group col-md-4">
+                            <label asp-for="CellPhone"></label>
+                            <input asp-for="CellPhone" class="form-control" type="number" />
+                            <span asp-validation-for="CellPhone" class="text-danger"></span>
+                        </div>
+                    </div>
+                   
+                        
+                        
+                       
+
+                
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="Password"></label>
+                            <input asp-for="Password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label asp-for="ConfirmPassword"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        @*<div class="form-check mb">
+                            <label asp-for="Status"></label>
+                            <input asp-for="Status" class="form-check-input" />
+                            <span asp-validation-for="Status"></span>
+                        </div>*@
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group col-md-3">
-                <label asp-for="Password"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-3">
-                <label asp-for="ConfirmPassword"></label>
-                <input asp-for="ConfirmPassword" class="form-control" />
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="form-group col-md-3">
-                <button type="submit" class="btn btn-primary mt-3">Registrar</button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>

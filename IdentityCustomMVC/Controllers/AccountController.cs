@@ -1,4 +1,5 @@
-﻿using IdentityCustomMVC.Models;
+﻿using IdentityCustomMVC.Entities;
+using IdentityCustomMVC.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,11 +7,11 @@ namespace IdentityCustomMVC.Controllers
 {
     public class AccountController : Controller
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
-        public AccountController(UserManager<IdentityUser> userManager,
-                                    SignInManager<IdentityUser> signManager)
+        public AccountController(UserManager<ApplicationUser> userManager,
+                                    SignInManager<ApplicationUser> signManager)
         {
             _signInManager = signManager;
             _userManager = userManager;
@@ -44,8 +45,21 @@ namespace IdentityCustomMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser
+                //var user = new IdentityUser
+                //{
+                //    UserName = model.Email,
+                //    Email = model.Email,
+                //};
+
+                var user = new ApplicationUser
                 {
+                    Name = model.Name,
+                    Cpf = model.Cpf,
+                    BirthDate = model.BirthDate,
+                    Address = model.Address,
+                    Cep = model.Cep,
+                    CellPhone   = model.CellPhone,
+                    Status = model.Status,                    
                     UserName = model.Email,
                     Email = model.Email,
                 };

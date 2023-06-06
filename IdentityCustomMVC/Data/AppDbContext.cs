@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IdentityCustomMVC.Data
 {
-    public class AppDbContext : IdentityDbContext
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -14,10 +14,11 @@ namespace IdentityCustomMVC.Data
 
         public DbSet<Product> Products { get; set; }
 
-        //public DbSet<User> Users { get; set; }
+        //public DbSet<ApplicationUser> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);
 
             base.OnModelCreating(builder);
            
@@ -36,19 +37,19 @@ namespace IdentityCustomMVC.Data
 
         //*CASO NAO REALIZE ESSE OVERRIDE DARÁ UM ERRO DE DbContext SEM ENTIDADE NO CONSTRUTOR.
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //*
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseMySql(GetStringConnection(), ServerVersion.Parse("8.0.29"));
-        //        base.OnConfiguring(optionsBuilder);
-        //    }
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) //*
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql(GetStringConnection(), ServerVersion.Parse("8.0.29"));
+                base.OnConfiguring(optionsBuilder);
+            }
+        }
 
-        //private string GetStringConnection()
-        //{
-        //    return "server=localhost;userid=root;password=123456;database=identitycustommvcoficial";
-        //}
+        private string GetStringConnection()
+        {
+            return "server=localhost;userid=root;password=123456;database=identitycustommvcoficial";
+        }
 
         #endregion
     }

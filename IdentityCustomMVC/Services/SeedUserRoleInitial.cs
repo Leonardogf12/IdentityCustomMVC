@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using IdentityCustomMVC.Entities;
+using Microsoft.AspNetCore.Identity;
 using System.Data;
 
 namespace IdentityCustomMVC.Services
@@ -6,10 +7,10 @@ namespace IdentityCustomMVC.Services
     public class SeedUserRoleInitial : ISeedUserRoleInitial
     {
 
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public SeedUserRoleInitial(UserManager<IdentityUser> userManager,
+        public SeedUserRoleInitial(UserManager<ApplicationUser> userManager,
                                     RoleManager<IdentityRole> roleManager)
         {
             _roleManager = roleManager;
@@ -66,7 +67,14 @@ namespace IdentityCustomMVC.Services
         {
             if (await _userManager.FindByEmailAsync("master@master.com") == null)
             {
-                IdentityUser user = new IdentityUser();
+                ApplicationUser user = new ApplicationUser();
+                user.Name = "Desenvolvedor";
+                user.Cpf = "12345678910";
+                user.Address = "Avenida .Net";
+                user.Cep = "29000000";
+                user.BirthDate = DateTime.Now.Date;
+                user.CellPhone = "3216549877";
+                user.Status = true;
                 user.UserName = "master@master.com";
                 user.Email = "master@master.com";
                 user.NormalizedUserName = "MASTER@MASTER.COM";
@@ -85,7 +93,14 @@ namespace IdentityCustomMVC.Services
 
             if (await _userManager.FindByEmailAsync("admin@admin.com") == null)
             {
-                IdentityUser user = new IdentityUser();
+                ApplicationUser user = new ApplicationUser();
+                user.Name = "Administrador";
+                user.Cpf = "98765432100";
+                user.Address = "Avenida .Admin";
+                user.Cep = "1000000";
+                user.BirthDate = DateTime.Now.Date;
+                user.CellPhone = "987987987";
+                user.Status = true;
                 user.UserName = "admin@admin.com";
                 user.Email = "admin@admin.com";
                 user.NormalizedUserName = "ADMIN@ADMIN.COM";

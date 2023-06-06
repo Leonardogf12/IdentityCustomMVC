@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\img\\user.png",
+      "PackagePath": "staticwebassets\\img\\user.png"
+    },
+    {
       "Id": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

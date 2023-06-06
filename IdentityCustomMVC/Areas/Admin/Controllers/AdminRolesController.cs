@@ -1,4 +1,5 @@
 ﻿using IdentityCustomMVC.Areas.Admin.Models;
+using IdentityCustomMVC.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,10 +15,10 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
     public class AdminRolesController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
 
         public AdminRolesController(RoleManager<IdentityRole> roleManager,
-                                        UserManager<IdentityUser> userManager)
+                                        UserManager<ApplicationUser> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -40,10 +41,10 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
         {
             IdentityRole role = await _roleManager.FindByIdAsync(id);
 
-            List<IdentityUser> members = new List<IdentityUser>();
-            List<IdentityUser> nonMembers = new List<IdentityUser>();
+            List<ApplicationUser> members = new List<ApplicationUser>();
+            List<ApplicationUser> nonMembers = new List<ApplicationUser>();
 
-            foreach (IdentityUser user in _userManager.Users.ToList())
+            foreach (ApplicationUser user in _userManager.Users.ToList())
             {
                
                 var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
@@ -101,7 +102,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
             {
                 foreach (string userId in model.AddIds ?? new string[] { })
                 {
-                    IdentityUser user = await _userManager.FindByIdAsync(userId);
+                    ApplicationUser user = await _userManager.FindByIdAsync(userId);
 
                     if (user != null)
                     {
@@ -114,7 +115,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
 
                 foreach (string userId in model.DeleteIds ?? new string[] { })
                 {
-                    IdentityUser user = await _userManager.FindByIdAsync(userId);
+                    ApplicationUser user = await _userManager.FindByIdAsync(userId);
 
                     if (user != null)
                     {

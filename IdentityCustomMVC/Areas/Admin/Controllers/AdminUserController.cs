@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using IdentityCustomMVC.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,9 +9,9 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
     [Authorize(Roles ="Master")]
     public class AdminUserController : Controller
     {
-        private UserManager<IdentityUser> userManager;
+        private UserManager<ApplicationUser> userManager;
 
-        public AdminUserController(UserManager<IdentityUser> userManager)
+        public AdminUserController(UserManager<ApplicationUser> userManager)
         {
             this.userManager = userManager;
         }

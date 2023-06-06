@@ -18,8 +18,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connecti
 
 #region CONFIGURA O IDENTITY NA CLASSE PROGRAM
 
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-                        .AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+                     .AddEntityFrameworkStores<AppDbContext>();
 #endregion
 
 #region INJECAO DE DEPENDENCIAS, REGISTROS.

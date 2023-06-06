@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2XADTyKLEL/oB68Mi7jFvu+CiQCSGIb/df9V6dKttk8=",
+  "Hash": "pqnF+pmUu5EHMz6AG5KVuAUTaD6SfQmokmccwOZJoHE=",
   "Source": "IdentityCustomMVC",
   "BasePath": "_content/IdentityCustomMVC",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\img\\user.png",
+      "SourceId": "IdentityCustomMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\",
+      "BasePath": "_content/IdentityCustomMVC",
+      "RelativePath": "img/user.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\user.png"
     },
     {
       "Identity": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\site.js",

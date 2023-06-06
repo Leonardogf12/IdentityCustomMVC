@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace IdentityCustomMVC.Entities
 {
-    [NotMapped]
-    public class User
+    //[NotMapped]
+    public class ApplicationUser : IdentityUser
     {
         [Column("USR_NAME")]
         [MaxLength(255)]
