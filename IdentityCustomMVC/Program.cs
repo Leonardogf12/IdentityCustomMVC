@@ -1,5 +1,7 @@
 using IdentityCustomMVC.Data;
 using IdentityCustomMVC.Entities;
+using IdentityCustomMVC.Interfaces;
+using IdentityCustomMVC.Repositories;
 using IdentityCustomMVC.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Razor.Language.Intermediate;
@@ -24,7 +26,14 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 #region INJECAO DE DEPENDENCIAS, REGISTROS.
 
+//*INTERFACE PARA CRIACAO INICIAL DAS ROLES E USERS.
 builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
+
+//*INTERFACE GENERICA
+builder.Services.AddSingleton(typeof(IGeneric<>), typeof(GenericRepository<>));
+
+//*INTERFACE DE PRODUTO.
+builder.Services.AddScoped<IProduct, ProductRepository>();
 
 #endregion
 

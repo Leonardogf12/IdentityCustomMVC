@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using IdentityCustomMVC.Data;
+﻿using IdentityCustomMVC.Data;
 using IdentityCustomMVC.Entities;
+using IdentityCustomMVC.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IdentityCustomMVC.Controllers
 {
@@ -16,37 +11,30 @@ namespace IdentityCustomMVC.Controllers
     public class ProductsController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IProduct _IProduct;
 
-        public ProductsController(AppDbContext context)
+        public ProductsController(AppDbContext context, IProduct IProduct)
         {
             _context = context;
+            _IProduct = IProduct;
         }
 
         #region GETS
-
         
         public async Task<IActionResult> Index()
-        {
-            return _context.Products != null ?
-                        View(await _context.Products.ToListAsync()) :
-                        Problem("Entity set 'AppDbContext.Products'  is null.");
+        {          
+            return _IProduct.List() != null ?
+                        View(await _IProduct.List()) :
+                        Problem("A entidade 'AppDbContext.Products' é nula.");
         }
-
         
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null || _context.Products == null)
-            {
+            var product = await _IProduct.GetEntityById(id);
+                
+            if (product == null)            
                 return NotFound();
-            }
-
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
+            
             return View(product);
         }
 
@@ -57,35 +45,23 @@ namespace IdentityCustomMVC.Controllers
         }
 
         [Authorize(Roles = "Master, Admin, Gerente")]
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
+        public async Task<IActionResult> Edit(int id)
+        {            
+            var product = await _IProduct.GetEntityById(id);
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
+            if (product == null)            
                 return NotFound();
-            }
+            
             return View(product);
         }
 
         [Authorize(Roles = "Master, Admin, Gerente")]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null || _context.Products == null)
-            {
-                return NotFound();
-            }
+            var product = await _IProduct.GetEntityById(id);
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.Id == id);
             if (product == null)
-            {
                 return NotFound();
-            }
 
             return View(product);
         }        
@@ -100,10 +76,10 @@ namespace IdentityCustomMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
+                await _IProduct.Add(product);               
                 return RedirectToAction(nameof(Index));
             }
+
             return View(product);
         }
 
@@ -117,22 +93,17 @@ namespace IdentityCustomMVC.Controllers
             }
 
             if (ModelState.IsValid)
-            {
+            {               
                 try
                 {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
+                    await _IProduct.Update(product);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ProductExists(product.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    if (!_IProduct.Exists(product.Id))                    
+                        return NotFound();                    
+                    else                    
+                        throw;                    
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -142,29 +113,18 @@ namespace IdentityCustomMVC.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            if (_context.Products == null)
-            {
-                return Problem("Entity set 'AppDbContext.Products'  is null.");
-            }
-            var product = await _context.Products.FindAsync(id);
-            if (product != null)
-            {
-                _context.Products.Remove(product);
-            }
+        {            
+            var product = await _IProduct.GetEntityById(id);
 
-            await _context.SaveChangesAsync();
+            if (product != null)            
+                await _IProduct.Delete(product);
+                       
             return RedirectToAction(nameof(Index));
         }
 
         #endregion
 
         #region OTHERS
-
-        private bool ProductExists(int id)
-        {
-            return (_context.Products?.Any(e => e.Id == id)).GetValueOrDefault();
-        }
 
         #endregion
 
