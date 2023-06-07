@@ -2,27 +2,36 @@
 using IdentityCustomMVC.Entities;
 using IdentityCustomMVC.Interfaces;
 using IdentityCustomMVC.Models;
+using IdentityCustomMVC.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.Elfie.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using Microsoft.VisualBasic;
+using Microsoft.AspNetCore.Hosting;
 
 namespace IdentityCustomMVC.Controllers
 {
+
     public class AccountController : Controller
     {
-        
+
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IUser _IUser;
-
+        private readonly IAccount _IAccount;
 
         public AccountController(UserManager<ApplicationUser> userManager,
                                     SignInManager<ApplicationUser> signManager,
-                                    IUser IUser)
+                                    IUser IUser,
+                                    IAccount IAccount)
         {
             _signInManager = signManager;
             _userManager = userManager;
             _IUser = IUser;
+            _IAccount = IAccount;
         }
 
         #region GETS
@@ -37,16 +46,36 @@ namespace IdentityCustomMVC.Controllers
             return View();
         }
 
-        [Route("Change-Password")]
+        [Route("change-password")]
         public async Task<IActionResult> ChangePassword()
         {
             return View();
         }
 
-        [HttpGet]
         [Route("Account/AccessDenied")]
         public ActionResult AccessDenied()
         {
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("forgot-password")]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("reset-password")]
+        public IActionResult ResetPassword(string token, string email)
+        {
+            if (token == null || email == null)
+            {
+                ModelState.AddModelError("", "O token para reset da senha não é válido.");
+            }
+
             return View();
         }
 
@@ -72,8 +101,8 @@ namespace IdentityCustomMVC.Controllers
                     BirthDate = model.BirthDate,
                     Address = model.Address,
                     Cep = model.Cep,
-                    CellPhone   = model.CellPhone,
-                    Status = model.Status,                    
+                    CellPhone = model.CellPhone,
+                    Status = model.Status,
                     UserName = model.Email,
                     Email = model.Email,
                 };
@@ -86,7 +115,7 @@ namespace IdentityCustomMVC.Controllers
                     return RedirectToAction("Index", "home");
                 }
 
-                foreach(var erro in result.Errors)
+                foreach (var erro in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, erro.Description);
                 }
@@ -95,8 +124,6 @@ namespace IdentityCustomMVC.Controllers
             return View(model);
 
         }
-
-      
 
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
@@ -107,13 +134,13 @@ namespace IdentityCustomMVC.Controllers
                     model.Password, model.RememberMe, false);
 
                 if (result.Succeeded)
-                {                    
+                {
                     return RedirectToAction("Index", "home");
                 }
 
-               
-                    ModelState.AddModelError(string.Empty,"Login inválido");
-                
+
+                ModelState.AddModelError(string.Empty, "Login inválido");
+
             }
 
             return View(model);
@@ -121,24 +148,24 @@ namespace IdentityCustomMVC.Controllers
         }
 
         [HttpPost]
-        [Route("Change-Password")]
+        [Route("change-password")]
         public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
         {
             if (ModelState.IsValid)
             {
-               
+
                 var userId = _IUser.GetUserId();
                 var user = await _userManager.FindByIdAsync(userId);
-                
-                var result =  await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
-                if(result.Succeeded)
+
+                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                if (result.Succeeded)
                 {
                     ModelState.Clear();
                     ViewBag.IsSuccess = true;
                     return View();
                 }
 
-                foreach(var error in result.Errors)
+                foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
                 }
@@ -153,7 +180,63 @@ namespace IdentityCustomMVC.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "home");
         }
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("forgot-password")]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+
+                if (user != null && await _userManager.IsEmailConfirmedAsync(user))
+                {
+                    //var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+                    //var passwordResetLink = Url.Action("ResetPassword", "Account",
+                    //    new { email = model.Email, token = token }, Request.Scheme);
+                    
+                    return View("ForgotPasswordConfirmation");
+                }
+                return View("ForgotPasswordConfirmation");
+            }
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("reset-password")]
+        public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    var result = await _userManager.ResetPasswordAsync(user, model.Token, model.Password);
+
+                    if (result.Succeeded)
+                    {
+                        return View("ResetPasswordConfirmation");
+                    }
+
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+                return View("ResetPasswordConfirmation");
+            }
+
+            return View(model);
+        }
 
         #endregion
+
+
+
+
     }
 }

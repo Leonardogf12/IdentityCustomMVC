@@ -1,6 +1,7 @@
 using IdentityCustomMVC.Data;
 using IdentityCustomMVC.Entities;
 using IdentityCustomMVC.Interfaces;
+using IdentityCustomMVC.Models;
 using IdentityCustomMVC.Repositories;
 using IdentityCustomMVC.Services;
 using Microsoft.AspNetCore.Identity;
@@ -22,6 +23,8 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connecti
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
                      .AddEntityFrameworkStores<AppDbContext>();
+
+
 #endregion
 
 #region INJECAO DE DEPENDENCIAS, REGISTROS.
@@ -37,6 +40,15 @@ builder.Services.AddScoped<IProduct, ProductRepository>();
 
 //*INTERFACE DE USUARIO.
 builder.Services.AddScoped<IUser, UserRepository>();
+
+
+builder.Services.AddScoped<IAccount, AccountRepository>();
+
+
+
+#endregion
+
+#region CONFIGURE
 
 #endregion
 

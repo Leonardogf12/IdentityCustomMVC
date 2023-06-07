@@ -53,6 +53,10 @@ namespace IdentityCustomMVC.Data
 
         public DbSet<IdentityCustomMVC.Models.ChangePasswordViewModel> ChangePasswordViewModel { get; set; } = default!;
 
+        public DbSet<IdentityCustomMVC.Models.ForgotPasswordViewModel> ForgotPasswordViewModel { get; set; } = default!;
+
+        public DbSet<IdentityCustomMVC.Models.ResetPasswordViewModel> ResetPasswordViewModel { get; set; } = default!;
+
         #endregion
     }
 }
