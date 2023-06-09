@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace IdentityCustomMVC.Models
@@ -7,34 +8,21 @@ namespace IdentityCustomMVC.Models
     {
         public int Id { get; set; }
 
-        [Required]
-        public string UserId { get; set; }
-       
-        [Required, DataType(DataType.Password)]
-        public string NewPassword { get; set; }
-
-        [Required, DataType(DataType.Password)]
-        [Compare("NewPassword")]
-        public string ConfirmNewPassword { get; set; }
-
-        public bool IsSuccess { get; set; }
-
-        //***************************************************
-        //*OUTRA TENTATIVA
-
-        [Required]
-        [EmailAddress]
+        [DisplayName("Email")]
         public string? Email { get; set; }
 
-        [Required]
+        public string? Token { get; set; }
+
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
         [DataType(DataType.Password)]
+        [DisplayName("Senha")]
         public string? Password { get; set; }
 
-        [Required, DataType(DataType.Password)]
-        [Compare("Password")]
+        [Required(ErrorMessage = "Este campo é obrigatório.")]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage = "As novas senhas não conferem.")]
+        [DisplayName("Confirmar Senha")]
         public string? ConfirmPassword { get; set; }
-       
-        public string Token { get; set; }
-
+               
     }
 }

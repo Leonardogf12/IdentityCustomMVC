@@ -1,14 +1,14 @@
 using IdentityCustomMVC.Data;
 using IdentityCustomMVC.Entities;
 using IdentityCustomMVC.Interfaces;
-using IdentityCustomMVC.Models;
+using IdentityCustomMVC.Interfaces.Emails;
 using IdentityCustomMVC.Repositories;
 using IdentityCustomMVC.Services;
+using IdentityCustomMVC.Services.Emails;
+using IdentityCustomMVC.Settings.Emails;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Razor.Language.Intermediate;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,12 +22,11 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseMySql(connecti
 #region CONFIGURA O IDENTITY NA CLASSE PROGRAM
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-                     .AddEntityFrameworkStores<AppDbContext>();
-
-
+                     .AddEntityFrameworkStores<AppDbContext>()
+                     .AddTokenProvider<DataProtectorTokenProvider<ApplicationUser>>(TokenOptions.DefaultProvider);
 #endregion
 
-#region INJECAO DE DEPENDENCIAS, REGISTROS.
+#region INJECAO DE DEPENDENCIAS, REGISTROS DE SERVIÇOS.
 
 //*INTERFACE PARA CRIACAO INICIAL DAS ROLES E USERS.
 builder.Services.AddScoped<ISeedUserRoleInitial, SeedUserRoleInitial>();
@@ -41,16 +40,45 @@ builder.Services.AddScoped<IProduct, ProductRepository>();
 //*INTERFACE DE USUARIO.
 builder.Services.AddScoped<IUser, UserRepository>();
 
-
+//*INTERFACE DE ACCOUNT.
 builder.Services.AddScoped<IAccount, AccountRepository>();
 
+#endregion
+
+#region INJECAO DE DEPENDENCIA E SERVICOS DE ENVIOS DE EMAILS
+
+
+//*CONFIGURANDO VIDA UTIL DO TOKEN
+builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>
+   opt.TokenLifespan = TimeSpan.FromHours(2));
+
+//*OBTEM A CONFIGURAÇÃO FEITA NA appsettings.json
+//builder.Services.Configure<GMailSettings>(builder.Configuration.GetSection(nameof(GMailSettings)));
+builder.Services.Configure<SendinBlueSettings>(builder.Configuration.GetSection(nameof(SendinBlueSettings)));
+//builder.Services.Configure<SendGridSettings>(builder.Configuration.GetSection(nameof(SendGridSettings)));
+
+//*INJETANDO CLASSE DO PROVEDOR UTILIZADO PARA ENVIO DE EMAILS
+//builder.Services.AddScoped<IEmailService, GMailService>();
+builder.Services.AddScoped<IEmailService, SendinBlueService>();
+//builder.Services.AddScoped<IEmailService, SendGridService>();
 
 
 #endregion
 
-#region CONFIGURE
+#region CONFIGURANDO A CLASSE DE EmailConfiguration DO PROJETO EmailService.
+
+//*REGISTRANDO CONFIGURAÇÃO DO MÉTODO FormOptions
+builder.Services.Configure<FormOptions>(o => {
+    o.ValueLengthLimit = int.MaxValue;
+    o.MultipartBodyLengthLimit = int.MaxValue;
+    o.MemoryBufferThreshold = int.MaxValue;
+});
+
+
+//Senha do app = Nome:EmailService | Senha:ywwzbtnnliwhnxdq
 
 #endregion
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

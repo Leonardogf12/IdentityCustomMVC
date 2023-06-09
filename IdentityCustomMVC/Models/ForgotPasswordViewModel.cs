@@ -7,7 +7,7 @@ namespace IdentityCustomMVC.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este campo é obrigatório.")]      
         [EmailAddress(ErrorMessage = "Email inválido.")]
         [DisplayName("Email do Registro.")]
         public string? Email { get; set; }

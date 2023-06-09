@@ -13,9 +13,7 @@ namespace IdentityCustomMVC.Data
         }
 
         public DbSet<Product> Products { get; set; }
-
-        //public DbSet<ApplicationUser> Users { get; set; }
-
+     
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<ApplicationUser>().ToTable("AspNetUsers").HasKey(t => t.Id);

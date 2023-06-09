@@ -46,9 +46,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.ApplicationInsights.AspNetCore": {
+            "Microsoft.AspNet.Identity.Core": {
               "target": "Package",
-              "version": "[2.21.0, )"
+              "version": "[2.2.3, )"
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
@@ -86,9 +86,17 @@
               "target": "Package",
               "version": "[7.0.6, )"
             },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "SendGrid": {
+              "target": "Package",
+              "version": "[9.28.1, )"
             }
           },
           "imports": [

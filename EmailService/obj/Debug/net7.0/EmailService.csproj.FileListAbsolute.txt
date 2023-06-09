@@ -1,0 +1,12 @@
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\bin\Debug\net7.0\EmailService.deps.json
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\bin\Debug\net7.0\EmailService.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\bin\Debug\net7.0\EmailService.pdb
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\EmailService.csproj.AssemblyReference.cache
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\EmailService.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\EmailService.AssemblyInfoInputs.cache
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\EmailService.AssemblyInfo.cs
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\EmailService.csproj.CoreCompileInputs.cache
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\EmailService.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\refint\EmailService.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\EmailService.pdb
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\EmailService\obj\Debug\net7.0\ref\EmailService.dll

@@ -1,16 +1,12 @@
-﻿using IdentityCustomMVC.Data;
-using IdentityCustomMVC.Entities;
+﻿using IdentityCustomMVC.Entities;
 using IdentityCustomMVC.Interfaces;
+using IdentityCustomMVC.Interfaces.Emails;
 using IdentityCustomMVC.Models;
-using IdentityCustomMVC.Repositories;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.CodeAnalysis.Elfie.Diagnostics;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
-using Microsoft.VisualBasic;
-using Microsoft.AspNetCore.Hosting;
+using System.Text;
+using System.Text.Encodings.Web;
 
 namespace IdentityCustomMVC.Controllers
 {
@@ -21,17 +17,21 @@ namespace IdentityCustomMVC.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly IUser _IUser;
-        private readonly IAccount _IAccount;
+        private readonly IAccount _IAccount;               
+        private readonly IEmailService _IEmailService;
+
 
         public AccountController(UserManager<ApplicationUser> userManager,
                                     SignInManager<ApplicationUser> signManager,
                                     IUser IUser,
-                                    IAccount IAccount)
+                                    IAccount IAccount,                                                                
+                                    IEmailService IEmailService)
         {
             _signInManager = signManager;
             _userManager = userManager;
             _IUser = IUser;
-            _IAccount = IAccount;
+            _IAccount = IAccount;    
+            _IEmailService = IEmailService;
         }
 
         #region GETS
@@ -42,7 +42,7 @@ namespace IdentityCustomMVC.Controllers
         }
 
         public async Task<IActionResult> Login()
-        {
+        {            
             return View();
         }
 
@@ -74,9 +74,14 @@ namespace IdentityCustomMVC.Controllers
             if (token == null || email == null)
             {
                 ModelState.AddModelError("", "O token para reset da senha não é válido.");
+                return View();
             }
-
-            return View();
+            else
+            {
+                var model = new ResetPasswordViewModel { Token = token, Email = email };
+                return View(model);
+            }
+            
         }
 
         #endregion
@@ -189,14 +194,28 @@ namespace IdentityCustomMVC.Controllers
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
 
-                if (user != null && await _userManager.IsEmailConfirmedAsync(user))
+                if (user != null /*&& await _userManager.IsEmailConfirmedAsync(user)*/)
                 {
-                    //var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                                        
+                    var urlConfirmation = Url.Action(nameof(ResetPassword), "Account", new { token, email = model.Email }, Request.Scheme);
 
-                    //var passwordResetLink = Url.Action("ResetPassword", "Account",
-                    //    new { email = model.Email, token = token }, Request.Scheme);
-                    
+                    var message = new StringBuilder();
+
+                    message.Append($"<p>Olá, {user.Name}.</p>");
+                    message.Append("<p>Houve uma solicitação de redefinição de " +
+                        "senha para seu usuário em nosso sistema. Se não foi você que fez " +
+                        "a solicitação, apenas ignore este email. Caso tenha sido você, clique " +
+                        "no link abaixo para criar sua nova senha.</p>");
+                    message.Append($"<p><a href='{urlConfirmation}'>Redefinir Senha</a></p>");
+                    message.Append($"<p>Atensiosamente, <br>Equipe de Suporte</br></p>");
+
+                    await _IEmailService.SendEmailAsync(user.Email,
+                                                        "Redefinição de Senha",
+                                                        message.ToString(),"");
+                   
                     return View("ForgotPasswordConfirmation");
+
                 }
                 return View("ForgotPasswordConfirmation");
             }
@@ -234,9 +253,6 @@ namespace IdentityCustomMVC.Controllers
         }
 
         #endregion
-
-
-
 
     }
 }

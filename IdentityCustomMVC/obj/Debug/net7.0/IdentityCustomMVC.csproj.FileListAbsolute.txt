@@ -296,6 +296,8 @@ D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Deb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Azure.Core.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Azure.Identity.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Humanizer.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\MailKit.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AspNet.Identity.Core.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -350,8 +352,10 @@ D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Deb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.Win32.SystemEvents.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\MimeKit.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\MySqlConnector.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\NETCore.MailKit.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Newtonsoft.Json.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\NuGet.Common.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\NuGet.Configuration.dll
@@ -363,6 +367,9 @@ D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Deb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\NuGet.Protocol.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\NuGet.Versioning.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Pomelo.EntityFrameworkCore.MySql.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\BouncyCastle.Crypto.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\SendGrid.dll
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\StarkbankEcdsa.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\System.CodeDom.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\System.Composition.AttributedModel.dll
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\System.Composition.Convention.dll
@@ -572,13 +579,3 @@ D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Deb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\IdentityCustomMVC.pdb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\IdentityCustomMVC.genruntimeconfig.cache
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\ref\IdentityCustomMVC.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.ApplicationInsights.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.ApplicationInsights.AspNetCore.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AI.DependencyCollector.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AI.EventCounterCollector.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AI.PerfCounterCollector.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AI.WindowsServer.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.AI.ServerTelemetryChannel.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\Microsoft.Extensions.Logging.ApplicationInsights.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\System.Diagnostics.PerformanceCounter.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\bin\Debug\net7.0\runtimes\win\lib\netcoreapp2.0\System.Diagnostics.PerformanceCounter.dll
