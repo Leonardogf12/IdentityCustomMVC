@@ -182,8 +182,9 @@ namespace IdentityCustomMVC.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "home");
+            return RedirectToAction("Login", "Account");
         }
+
         [HttpPost]
         [AllowAnonymous]
         [Route("forgot-password")]

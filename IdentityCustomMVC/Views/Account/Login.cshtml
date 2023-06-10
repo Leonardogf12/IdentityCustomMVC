@@ -4,42 +4,50 @@
     ViewData["Title"] = "Entrar";
 }
 
-<div class="row d-flex justify-content-center">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
+<div class="content-wrapper">
 
-                <div class="text-center col-md-12">
-                    <img src="~/img/user.png" width="100" height="100" class="rounded float-left mb-4" />
-                </div>
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4 position-fixed">
+            <section class="col-md-4 position-fixed">
 
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <form id="account" method="post">
+                    
+                    <div class="d-flex justify-content-center">
 
-                <div class="form-floating mb-3">
-                    <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true"/>
-                    <label asp-for="Email" class="form-label">Email</label>
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true"/>
-                    <label asp-for="Password" class="form-label">Senha</label>
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="checkbox mb-3">
-                    <label asp-for="RememberMe" class="form-label">
-                        <input class="form-check-input" asp-for="RememberMe" />
-                        @Html.DisplayNameFor(m => m.RememberMe)
-                    </label>
-                </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mt-3">Entrar</button>
-                </div>
-                <div>
-                    <a class="nav-link p-0 mt-3" asp-action="ForgotPassword" asp-controller="Account">Esqueceu a senha?</a>
-                </div>
-               
-            </form>
-        </section>
+                        <div class="form-group">
+                            <div class="text-center col-md-3">
+                                <img class="rounded mb-4 mt-5" src="~/img/user.png" width="100" height="100" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Email" class="form-label">Email</label>
+                        <input asp-for="Email" class="form-control" autocomplete="username" aria-required="true" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label asp-for="Password" class="form-label">Senha</label>
+                        <input asp-for="Password" class="form-control" autocomplete="current-password" aria-required="true" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-check">
+                        <label asp-for="RememberMe" class="form-checkbox">
+                            <input class="form-check-input" asp-for="RememberMe" />
+                            @Html.DisplayNameFor(m => m.RememberMe)
+                        </label>
+                    </div>
+                    <div>
+                        <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mt-3">Entrar</button>
+                    </div>
+                    <div class="row justify-content-between">
+                        <a class="nav-link p-2 mt-3" asp-action="ForgotPassword" asp-controller="Account">Esqueceu a senha?</a>
+                        <div asp-validation-summary="ModelOnly" class="text-danger p-2 mt-3" role="alert"></div>
+                    </div>
+                    
+                </form>
+            </section>
+        </div>
     </div>
 </div>
 

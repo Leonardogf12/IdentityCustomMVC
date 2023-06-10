@@ -6,24 +6,23 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <p>Bem Vindo, <b>&nbsp;@User.Identity.Name</b>  </p>
-    <ul class="btn-group">
-        <form method="post" asp-controller="account" asp-action="logout">
-            <button type="submit" class="nav-link btn btn-link" style="width:auto">
-               Sair
-            </button>
-        </form>
-   
-        <a class="nav-link" asp-controller="account" asp-action="ChangePassword">Alterar Senha</a>
+    <div class="dropdown show">
+        <a class="fa fa-bars dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">           
+        </a>
 
-    </ul>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">
+                <form method="post" asp-controller="account" asp-action="logout">
+                    <button type="submit" class="nav-link btn btn-link">
+                        Sair
+                    </button>
+                </form>
+            </a>
+            <a class="dropdown-item" href="#"> <a class="nav-link" asp-controller="account" asp-action="ChangePassword">Alterar Senha</a></a>
+        </div>
+    </div>
 }
 else
 {
-   @* <ul class="nav-item">
-        <a class="nav-link" asp-controller="account" asp-action="register">Registrar</a>        
-    </ul>*@
-    <ul class="nav-item">
-        <a class="nav-link" asp-controller="account" asp-action="login">Login</a>
-    </ul>
+    <a class="nav-link" asp-controller="account" asp-action="login">Login</a>
 }
