@@ -134,7 +134,7 @@ namespace IdentityCustomMVC.Controllers
         public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
-            {
+            {                
                 var result = await _signInManager.PasswordSignInAsync(model.Email,
                     model.Password, model.RememberMe, false);
 
@@ -142,7 +142,6 @@ namespace IdentityCustomMVC.Controllers
                 {
                     return RedirectToAction("Index", "home");
                 }
-
 
                 ModelState.AddModelError(string.Empty, "Login inválido");
 

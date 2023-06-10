@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 #region STRING DE CONEXAO MYSQL
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
