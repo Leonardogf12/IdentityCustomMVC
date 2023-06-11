@@ -1,0 +1,28 @@
+﻿@using IdentityCustomMVC.Entities;
+@using Microsoft.AspNetCore.Identity
+@using IdentityCustomMVC.Models;
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> userManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="dropdown show">
+        <a class="fa fa-bars dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">           
+        </a>
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="#">
+                <form method="post" asp-controller="account" asp-action="logout" asp-area="">
+                    <button type="submit" class="nav-link btn btn-link">
+                        Sair
+                    </button>
+                </form>
+            </a>
+            <a class="dropdown-item" href="#"> <a class="nav-link" asp-controller="account" asp-action="ChangePassword">Alterar Senha</a></a>
+        </div>
+    </div>
+}
+else
+{
+    <a class="nav-link" asp-controller="account" asp-action="login">Login</a>
+}

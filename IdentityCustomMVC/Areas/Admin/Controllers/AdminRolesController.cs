@@ -1,8 +1,11 @@
-﻿using IdentityCustomMVC.Areas.Admin.Models;
+﻿using IdentityCustomMVC.Areas.Admin.Entities;
+using IdentityCustomMVC.Areas.Admin.Models;
+using IdentityCustomMVC.Data;
 using IdentityCustomMVC.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Protocol;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
@@ -18,7 +21,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
         private readonly UserManager<ApplicationUser> _userManager;
 
         public AdminRolesController(RoleManager<IdentityRole> roleManager,
-                                        UserManager<ApplicationUser> userManager)
+                                    UserManager<ApplicationUser> userManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
@@ -46,7 +49,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
 
             foreach (ApplicationUser user in _userManager.Users.ToList())
             {
-               
+
                 var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
 
                 list.Add(user);
@@ -78,19 +81,24 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
         #region POSTS
 
         [HttpPost]
-        public async Task<IActionResult> Create([Required] string name)
+        public async Task<IActionResult> Create([Bind("Name")] IdentityRoleCustom obj)
         {
             if (ModelState.IsValid)
             {
-                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(name));
+                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole(obj.Name));
 
                 if (result.Succeeded)
                     return RedirectToAction("Index");
                 else
                     Errors(result);
             }
+            else
+            {
+                return View(obj);
+            }
 
             return RedirectToAction("Index");
+            
         }
 
         [HttpPost]
@@ -154,6 +162,43 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
             }
 
             return View("Index", _roleManager.Roles);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteSeveral(string _registros)
+        {
+            try
+            {
+                string mensagem = string.Empty;
+
+                string[] separators = { "," };
+                string[] aAux;
+                
+                aAux = _registros.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                
+                for (int i = 0; i < aAux.Length; i++)
+                {
+                    var role = await _roleManager.FindByIdAsync(aAux[i]);
+                    if (role != null)
+                    {
+                        IdentityResult result = await _roleManager.DeleteAsync(role);
+
+                        if (!result.Succeeded)
+                            Errors(result);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Role não encontrada.");
+                    }
+                }
+
+                return PartialView("ListRolesPartial", _roleManager.Roles);
+            }
+            catch (Exception ex)
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+                return Json(ex.Message);
+            }
         }
 
         #endregion

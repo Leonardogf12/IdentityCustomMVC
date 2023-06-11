@@ -1,0 +1,168 @@
+﻿@using IdentityCustomMVC.Entities;
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head id="ComArea">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin</title>
+
+    @* ******* ORIGINAL ******* *@
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MvcWebIdentity.styles.css" asp-append-version="true" />*@
+    @* ******* NOVO TEMA ******* *@
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/theme/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/theme/dist/css/adminlte.min.css">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="~/theme/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/theme/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/theme/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="~/theme/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <!-- Toastr -->
+    <link rel="stylesheet" href="~/theme/plugins/toastr/toastr.min.css">
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+            <!-- Left navbar links -->
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" id="menupushAdmin" href="#" role="button"><i class="fas fa-bars"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Gerenciar Role</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminUser" asp-action="Index">Gerenciar Usuarios</a>
+                    </li>
+
+                </ul>
+                <partial name="_LoginPartial.cshtml" />
+
+            </div>
+        </nav>
+        <!-- /.navbar -->
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar  sidebar-dark-primary elevation-4" style=" position: fixed;">
+            <!-- Logo -->
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-link">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <img src="~/img/user.png" alt="IdentityCustomMVC" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <span class="brand-text font-weight-light">@User.Identity.Name</span>
+                }
+                else
+                {
+                    <img src="~/img/lock.png" alt="IdentityCustomMVC" class="brand-image img-circle elevation-3" style="opacity: .8">
+                    <p>IdentityCustomMVC</p>
+                }
+            </a>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+
+                <!-- SidebarSearch Form -->
+                <div class="form-inline mt-4">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Buscar" aria-label="Buscar">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <p>
+                                    Cadastro
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link text-white" asp-area="" asp-controller="Products" asp-action="Index">Produtos</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+               
+            </div>
+            <!-- /.sidebar -->
+
+        </aside>
+       
+        @RenderBody()
+
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Versão</b> 1.0.0
+            </div>
+            <div class="text-center">Copyright &copy; @DateTime.Now.ToString("yyyy") <a href="">Identity Custom MVC</a>. Todos os direitos reservados.</div>
+        </footer>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+    </div>
+
+    @* ******* ORIGINAL ******* *@
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>*@
+
+    @* ******* NOVO TEMA ******* *@
+    <!-- jQuery -->
+    <script src="~/theme/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/theme/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/theme/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/theme/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/theme/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/theme/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/theme/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/theme/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/theme/plugins/jszip/jszip.min.js"></script>
+    <script src="~/theme/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/theme/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/theme/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/theme/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/theme/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/theme/dist/js/adminlte.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/theme/dist/js/demo.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="~/theme/plugins/sweetalert2/sweetalert2.min.js"></script>
+    <!-- Toastr -->
+    <script src="~/theme/plugins/toastr/toastr.min.js"></script>
+    <!-- ChartJS -->
+    <script src="~/theme/plugins/chart.js/Chart.min.js"></script>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
