@@ -147,8 +147,7 @@ function CreateDataTableUpdateMembersRoles() {
 }
 
 
-function DeleteRolesIndex() {
-   
+function DeleteRolesIndex() {   
     var registers = CheckItensSelected();
 
     if (registers == '') {
@@ -160,8 +159,9 @@ function DeleteRolesIndex() {
             showCancelButton: true,
             showConfirmButton: false,
             cancelButtonColor: '#d33',
-            cancelButtonText: 'Fechar'
+            cancelButtonText: 'Fechar',            
         });
+
 
     } else {
 

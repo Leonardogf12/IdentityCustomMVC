@@ -5,30 +5,32 @@
     <div class="content">
 
         <h1 class="text-center mb-5">Remover da Role <b>@Model.Role.Name</b></h1>
-        <div class="card">
-            <div class="card-body">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
 
-                <div asp-validation-summary="All" class="text-danger"></div>
+                    <div asp-validation-summary="All" class="text-danger"></div>
 
-                <form method="post">
-                    <input type="hidden" name="roleName" value="@Model.Role.Name" />
-                    <input type="hidden" name="roleId" value="@Model.Role.Id" />
-                    <div class="btn-group mt-3 mb-3">
-                        <button type="submit" class="btn bg-gradient-danger">Remover</button>
-                        <a asp-action="Index" class="btn bg-gradient-secondary">Cancelar</a>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 class="mt-3">Remover da Role</h2>
-                            <div class="card">
-                                <div class="card-body" id="listUpdateMembersRolesRegisters">
-                                    <partial name="ListUpdateMembersRolesPartial" model="Model" />
+                    <form method="post">
+                        <input type="hidden" name="roleName" value="@Model.Role.Name" />
+                        <input type="hidden" name="roleId" value="@Model.Role.Id" />
+                        <div class="btn-group mt-3 mb-3">
+                            <button type="submit" class="btn bg-gradient-danger">Remover</button>
+                            <a asp-action="Index" class="btn bg-gradient-secondary">Cancelar</a>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <h2 class="mt-3">Remover da Role</h2>
+                                <div class="card">
+                                    <div class="card-body" id="listUpdateMembersRolesRegisters">
+                                        <partial name="ListUpdateMembersRolesPartial" model="Model" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
 
+                </div>
             </div>
         </div>
     </div>
