@@ -1,0 +1,84 @@
+﻿@using IdentityCustomMVC.Entities;
+@model RoleEdit
+
+<table id="dtUpdateNonMembersRoles" class="table table-hover">
+    @if (Model.NonMembers.Count() == 0)
+    {
+        <tr><td colspan="2">Todos os usuários pertecem a esta role</td></tr>
+    }
+    else
+    {       
+        <thead>
+            <tr>
+                <th class="p-4">
+                    <div class="form-check">
+                        <label class="form-check-label p-2">
+                            @*<input class="form-check-input" type="checkbox" id="checkAllNonMembers">*@
+                            <input class="form-check-input" type="checkbox" id="checkAllNonMembers">
+                            <span class="form-check-sign"></span>
+                        </label>
+                    </div>
+                </th>
+
+                <th>Usuários</th>
+
+                <th>Nome</th>
+
+            </tr>
+        </thead>
+        @foreach (ApplicationUser user in Model.NonMembers)
+        {
+           @* <tr>
+                <td>@user.UserName</td>
+                <td>
+                    <input type="checkbox" name="AddIds" value="@user.Id">
+                </td>
+            </tr>*@
+            
+            <tr>
+
+                <td class="text-left">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="@user.Id" value="@user.Id" name="AddIds">
+                            <span class="form-check-sign"></span>
+                        </label>
+                    </div>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => user.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Name)
+                </td>                
+
+            </tr>
+        }
+    }
+</table>
+
+<script src="~/theme/plugins/jquery/jquery.min.js" type="text/javascript"></script>
+<script>
+    //*FUNCOES RESPONSAVEIS PELO CHECKBOX DO DATATABLE.
+    $('#mycheck').on('ifClicked', function (event) { checkAllNonMembers(); });
+
+    $("#checkAllNonMembers").click(function () {
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+
+    function checkAllNonMembers() {
+        var checkboxes = document.getElementsByName('AddIds');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {
+                alert($('#mycheck').checked);
+                if ($('#mycheck').checked == true) {
+                    $('#' + checkboxes[i].id).attr('checked', true);
+                }
+                else {
+                    $('#' + checkboxes[i].id).attr('checked', false);
+                }
+            }
+        }
+    }
+</script>

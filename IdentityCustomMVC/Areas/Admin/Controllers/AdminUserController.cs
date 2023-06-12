@@ -33,21 +33,21 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
             }
             else
             {
-
                 var result = await userManager.DeleteAsync(user);
 
                 if (result.Succeeded)
-                {
-                    return RedirectToAction("Index");
+                {                    
+                    return PartialView("ListUsersPartial", userManager.Users.ToList());
                 }
 
                 foreach (var erro in result.Errors)
                 {
                     ModelState.AddModelError("", erro.Description);
                 }
-
-                return View("Index");
+                
+                return PartialView("ListUsersPartial", userManager.Users.ToList());
             }
-        }       
+        }
+        
     }
 }

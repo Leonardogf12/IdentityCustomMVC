@@ -1,70 +1,110 @@
 ﻿@using IdentityCustomMVC.Entities;
 @model RoleEdit
 
-<div class="container">
-<h1 class="text-center mb-5">Atualizar Role</h1>
-    <div class="card">
-        <div class="card-body">
-           
-            <div asp-validation-summary="All" class="text-danger"></div>
+<div class="content-wrapper">
+    <div class="content">
+      
+        <h1 class="text-center mb-5">Atualizar Role <b>@Model.Role.Name</b></h1>
+        <div class="card">
+            <div class="card-body">
 
-            <form method="post">
-                <input type="hidden" name="roleName" value="@Model.Role.Name" />
-                <input type="hidden" name="roleId" value="@Model.Role.Id" />
+                <div asp-validation-summary="All" class="text-danger"></div>
 
-                <h2 class="bg-secondary p-1 text-white">Incluir na Role : @Model.Role.Name</h2>
-                <table class="table table-bordered table-sm">
-                    @if (Model.NonMembers.Count() == 0)
-                    {
-                        <tr><td colspan="2">Todos os usuários pertecem a esta role</td></tr>
-                    }
-                    else
-                    {
-                        <tr>
-                            <th class="">Usuários</th>
-                            <th class="">Ações</th>
-                           
-                        </tr>
-                        @foreach (ApplicationUser user in Model.NonMembers)
+                <form method="post">
+                    <input type="hidden" name="roleName" value="@Model.Role.Name" />
+                    <input type="hidden" name="roleId" value="@Model.Role.Id" />
+                    <div class="btn-group mt-3 mb-3">
+                        <button type="submit" class="btn bg-gradient-success">Salvar</button>
+                        <a asp-action="Index" class="btn bg-gradient-danger">Cancelar</a>
+
+                    </div>                                     
+                   @* 
+                   ORIGINAL   
+                    <h2 class="bg-secondary p-1 text-white">Incluir na Role : @Model.Role.Name</h2>
+                   <table class="table table-bordered table-sm">
+                        @if (Model.NonMembers.Count() == 0)
+                        {
+                            <tr><td colspan="2">Todos os usuários pertecem a esta role</td></tr>
+                        }
+                        else
                         {
                             <tr>
-                                <td>@user.UserName</td>
-                                <td>
-                                    <input type="checkbox" name="AddIds" value="@user.Id">
-                                </td>
+                                <th class="">Usuários</th>
+                                <th class="">Ações</th>
+
                             </tr>
+                            @foreach (ApplicationUser user in Model.NonMembers)
+                            {
+                                <tr>
+                                    <td>@user.UserName</td>
+                                    <td>
+                                        <input type="checkbox" name="AddIds" value="@user.Id">
+                                    </td>
+                                </tr>
+                            }
                         }
-                    }
-                </table>
+                    </table>*@
 
-                <h2 class="bg-secondary p-1 text-white">Remover da Role : @Model.Role.Name</h2>
-                <table class="table table-bordered table-sm">
-                    @if (Model.Members.Count() == 0)
-                    {
-                        <tr><td colspan="2">Não existem usuários nesta Role</td></tr>
-                    }
-                    else
-                    {
-                        <tr>
-                            <th class="">Usuários</th>
-                            <th class="">Ações</th>
+                    @*********************** NON MEMBERS **********************@
+                    <div class="row">
+                        <div class="col-12">
+                        <h2 class="mt-3">Incluir na Role : @Model.Role.Name</h2>
+                            <div class="card">
+                                <div class="card-body" id="listUpdateNonMembersRolesRegisters">
+                                    <partial name="ListUpdateNonMembersRolesPartial" model="Model" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        </tr>
-                        @foreach (ApplicationUser user in Model.Members)
+                   
+                    @*
+                    ORIGINAL
+                    <h2 class="bg-secondary p-1 text-white">Remover da Role : @Model.Role.Name</h2>
+                    <table class="table table-bordered table-sm">
+                        @if (Model.Members.Count() == 0)
+                        {
+                            <tr><td colspan="2">Não existem usuários nesta Role</td></tr>
+                        }
+                        else
                         {
                             <tr>
-                                <td>@user.UserName</td>
-                                <td>
-                                    <input type="checkbox" name="DeletarIds" value="@user.Id">
-                                </td>
-                            </tr>
-                        }
-                    }
-                </table>
-                <button type="submit" class="btn btn-success">Salvar</button>
-                <a asp-action="Index" class="btn btn-danger">Cancelar</a>
-            </form>
+                                <th class="">Usuários</th>
+                                <th class="">Ações</th>
 
+                            </tr>
+                            @foreach (ApplicationUser user in Model.Members)
+                            {
+                                <tr>
+                                    <td>@user.UserName</td>
+                                    <td>
+                                        <input type="checkbox" name="DeletarIds" value="@user.Id">
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </table>*@
+
+                    @*********************** MEMBERS **********************@
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="mt-3">Remover da Role : @Model.Role.Name</h2>
+                            <div class="card">
+                                <div class="card-body" id="listUpdateMembersRolesRegisters">
+                                    <partial name="ListUpdateMembersRolesPartial" model="Model" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @*<button type="submit" class="btn btn-success">Salvar</button>
+                    <a asp-action="Index" class="btn btn-danger">Cancelar</a>*@
+                </form>
+
+            </div>
         </div>
     </div>
 </div>
+
+<script src="~/theme/plugins/jquery/jquery.min.js" type="text/javascript"></script>
+<script src="~/theme/dist/js/demo.js" type="text/javascript"></script>
+<script src="~/js/RolesJs/Roles.js" type="text/javascript"></script>

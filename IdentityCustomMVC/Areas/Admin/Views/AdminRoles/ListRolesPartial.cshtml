@@ -12,8 +12,7 @@
                 </div>
             </th>  
             
-            <th>@Html.DisplayNameFor(model =>model.Name)</th>  
-            
+            <th>@Html.DisplayNameFor(model =>model.Name)</th>              
             <th>Ações</th>
 
         </tr>
@@ -32,16 +31,15 @@
                     </div>
                 </td>    
                 
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>              
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>              
               
                 <td>
                     <div>
                         <i type="button" class="fas fa-bars" data-toggle="dropdown"></i>
-                        <ul class="dropdown-menu">
-                            <li><a class="nav-link" style="" asp-action="Update" asp-route-id="@item.Id">Editar</a></li>
-                            <li><a class="nav-link" asp-action="Delete" asp-route-id="@item.Id" method="post">Excluir</a></li>
+                        <ul class="dropdown-menu">                            
+                            <li><a class="nav-link" style="" asp-action="IncludeInRole" asp-route-id="@item.Id">Incluir na Role</a></li>
+                            <li><a class="nav-link" style="" asp-action="RemoveOfRole" asp-route-id="@item.Id">Remover da Role</a></li>
+                            <li><a class="nav-link" style="cursor:pointer" onclick="DeleteConfirm('@item.Id')">Excluir Role</a></li>
                         </ul>
                     </div>
                 </td>

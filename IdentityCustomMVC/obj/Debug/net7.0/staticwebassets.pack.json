@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\js\\RolesJs\\Roles.js"
     },
     {
+      "Id": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\UsersJs\\Users.js",
+      "PackagePath": "staticwebassets\\js\\UsersJs\\Users.js"
+    },
+    {
       "Id": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

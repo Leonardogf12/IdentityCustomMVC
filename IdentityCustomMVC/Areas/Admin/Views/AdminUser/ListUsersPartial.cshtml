@@ -1,0 +1,35 @@
+﻿@using IdentityCustomMVC.Entities;
+@model IEnumerable<ApplicationUser>
+
+<table id="dtUsers" class="table table-hover">   
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Usuário</th>
+            <th>Ações</th>
+        </tr>
+    </thead>   
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.UserName</td>
+                <td>
+                    <div>
+                        <i type="button" class="fas fa-bars" data-toggle="dropdown"></i>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item">
+                                @*<a class="nev-link m-2" asp-action="DeleteUser" asp-route-id="@user.Id" asp-area="Admin" method="post">Excluir</a>*@
+                                <a class="nev-link m-2" style="cursor:pointer" onclick="DeleteUser('@user.Id')">Excluir</a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

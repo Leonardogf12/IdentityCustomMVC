@@ -1,0 +1,74 @@
+﻿@using IdentityCustomMVC.Entities;
+@model RoleEdit
+
+<table id="dtUpdateMembersRoles" class="table table-hover">
+    @if (Model.Members.Count() == 0)
+    {
+        <tr><td colspan="2">Não existem usuários nesta Role</td></tr>
+    }
+    else
+    {      
+        <thead>
+            <tr>
+                <th class="p-4">
+                    <div class="form-check">
+                        <label class="form-check-label p-2">                            
+                            <input class="form-check-input" type="checkbox" id="checkAllMembers">
+                            <span class="form-check-sign"></span>
+                        </label>
+                    </div>
+                </th>
+
+                <th>Usuários</th>
+
+                <th>Nome</th>
+
+            </tr>
+        </thead>
+        @foreach (ApplicationUser user in Model.Members)
+        {         
+            <tr>
+
+                <td class="text-left">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="@user.Id" value="@user.Id" name="DeleteIds">
+                            <span class="form-check-sign"></span>
+                        </label>
+                    </div>
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => user.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => user.Name)
+                </td>
+
+            </tr>
+        }
+    }
+</table>
+
+<script>
+    //*FUNCOES RESPONSAVEIS PELO CHECKBOX DO DATATABLE.
+    $('#mycheck').on('ifClicked', function (event) { checkAllMembers(); });
+
+    $("#DeletarIds").click(function () {
+        $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+
+    function checkAllMembers() {
+        var checkboxes = document.getElementsByName('LISTACHECKMEMBERS');
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].type == 'checkbox') {              
+                if ($('#mycheck').checked == true) {
+                    $('#' + checkboxes[i].id).attr('checked', true);
+                }
+                else {
+                    $('#' + checkboxes[i].id).attr('checked', false);
+                }
+            }
+        }
+    }
+</script>

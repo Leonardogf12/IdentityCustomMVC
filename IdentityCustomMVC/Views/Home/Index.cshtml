@@ -9,15 +9,16 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <div class="content-wrapper">
-        <div class="text-center mt-5">
-            <h1 class="display-4">Bem vindo, <b>@User.Identity.Name</b></h1>            
+        <div class="text-center">
+            <h1 class="display-4">Bem vindo, <b>@User.Identity.Name</b></h1>
         </div>
     </div>
+
 }
 else
 {
     <div class="content-wrapper">
-        <div class="text-center mt-5">
+        <div class="text-center">
             <h1 class="display-4">Realize Login</h1>
         </div>
     </div>

@@ -1,15 +1,9 @@
 ﻿using IdentityCustomMVC.Areas.Admin.Entities;
 using IdentityCustomMVC.Areas.Admin.Models;
-using IdentityCustomMVC.Data;
 using IdentityCustomMVC.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol;
-using System.ComponentModel.DataAnnotations;
-using System.Data;
-using System.Text.RegularExpressions;
 
 namespace IdentityCustomMVC.Areas.Admin.Controllers
 {
@@ -76,6 +70,56 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
             return View(role);
         }
 
+        public async Task<IActionResult> IncludeInRole(string id)
+        {
+            IdentityRole role = await _roleManager.FindByIdAsync(id);
+
+            List<ApplicationUser> members = new List<ApplicationUser>();
+            List<ApplicationUser> nonMembers = new List<ApplicationUser>();
+
+            foreach (ApplicationUser user in _userManager.Users.ToList())
+            {
+
+                var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
+                //var list = await _userManager.IsInRoleAsync(user, role.Name);
+
+                list.Add(user);
+            }
+
+
+            return View(new RoleEdit
+            {
+                Role = role,
+                Members = members,
+                NonMembers = nonMembers
+            });
+        }
+
+        public async Task<IActionResult> RemoveOfRole(string id)
+        {
+            IdentityRole role = await _roleManager.FindByIdAsync(id);
+
+            List<ApplicationUser> members = new List<ApplicationUser>();
+            List<ApplicationUser> nonMembers = new List<ApplicationUser>();
+
+            foreach (ApplicationUser user in _userManager.Users.ToList())
+            {
+
+                var list = await _userManager.IsInRoleAsync(user, role.Name) ? members : nonMembers;
+                //var list = await _userManager.IsInRoleAsync(user, role.Name);
+
+                list.Add(user);
+            }
+
+
+            return View(new RoleEdit
+            {
+                Role = role,
+                Members = members,
+                NonMembers = nonMembers
+            });
+        }
+
         #endregion
 
         #region POSTS
@@ -108,6 +152,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
+                //*ADD USER NA ROLE
                 foreach (string userId in model.AddIds ?? new string[] { })
                 {
                     ApplicationUser user = await _userManager.FindByIdAsync(userId);
@@ -121,6 +166,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
                     }
                 }
 
+                //*REMOVE USER DA ROLE
                 foreach (string userId in model.DeleteIds ?? new string[] { })
                 {
                     ApplicationUser user = await _userManager.FindByIdAsync(userId);
@@ -140,6 +186,62 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
             else
                 return await Update(model.RoleId);
 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> IncludeInRole(RoleModification model)
+        {
+            IdentityResult result;
+
+            if (ModelState.IsValid)
+            {
+                //*ADD USER NA ROLE
+                foreach (string userId in model.AddIds ?? new string[] { })
+                {
+                    ApplicationUser user = await _userManager.FindByIdAsync(userId);
+
+                    if (user != null)
+                    {
+                        result = await _userManager.AddToRoleAsync(user, model.RoleName);
+
+                        if (!result.Succeeded)
+                            Errors(result);
+                    }
+                }
+            }
+
+            if (ModelState.IsValid)
+                return RedirectToAction(nameof(Index));
+            else
+                return await Update(model.RoleId);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RemoveOfRole(RoleModification model)
+        {
+            IdentityResult result;
+
+            if (ModelState.IsValid)
+            {
+                //*REMOVE USER DA ROLE
+                foreach (string userId in model.DeleteIds ?? new string[] { })
+                {
+                    ApplicationUser user = await _userManager.FindByIdAsync(userId);
+
+                    if (user != null)
+                    {
+                        result = await _userManager.RemoveFromRoleAsync(user, model.RoleName);
+
+                        if (!result.Succeeded)
+                            Errors(result);
+                    }
+                }
+            }
+
+            if (ModelState.IsValid)
+                return RedirectToAction(nameof(Index));
+            else
+                return await Update(model.RoleId);
         }
 
         [HttpPost, ActionName("Delete")]
@@ -164,7 +266,7 @@ namespace IdentityCustomMVC.Areas.Admin.Controllers
             return View("Index", _roleManager.Roles);
         }
 
-        [HttpPost]
+        [HttpPost, ActionName("DeleteSeveral")]
         public async Task<IActionResult> DeleteSeveral(string _registros)
         {
             try

@@ -569,6 +569,7 @@ D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Deb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\staticwebassets.pack.json
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\staticwebassets.build.json
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\staticwebassets.development.json
+D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\scopedcss\Areas\Admin\Views\Shared\_LayoutAdmin.cshtml.rz.scp.css
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\scopedcss\bundle\IdentityCustomMVC.styles.css
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\scopedcss\projectbundle\IdentityCustomMVC.bundle.scp.css
@@ -578,4 +579,3 @@ D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Deb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\IdentityCustomMVC.pdb
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\IdentityCustomMVC.genruntimeconfig.cache
 D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\ref\IdentityCustomMVC.dll
-D:\PROJETOS\IdentityCustomMVCProject\IdentityCustomMVC\IdentityCustomMVC\obj\Debug\net7.0\scopedcss\Areas\Admin\Views\Shared\_LayoutAdmin.cshtml.rz.scp.css

@@ -1,0 +1,38 @@
+﻿@using IdentityCustomMVC.Entities;
+@model RoleEdit
+
+<div class="content-wrapper">
+    <div class="content">
+
+        <h1 class="text-center mb-5">Incluir na Role <b>@Model.Role.Name</b></h1>
+        <div class="card">
+            <div class="card-body">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <form method="post">
+                    <input type="hidden" name="roleName" value="@Model.Role.Name" />
+                    <input type="hidden" name="roleId" value="@Model.Role.Id" />
+                    <div class="btn-group mt-3 mb-3">
+                        <button type="submit" class="btn bg-gradient-success">Incluir</button>
+                        <a asp-action="Index" class="btn bg-gradient-danger">Cancelar</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">                          
+                            <div class="card">
+                                <div class="card-body" id="listUpdateNonMembersRolesRegisters">
+                                    <partial name="ListUpdateNonMembersRolesPartial" model="Model" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/theme/plugins/jquery/jquery.min.js" type="text/javascript"></script>
+<script src="~/theme/dist/js/demo.js" type="text/javascript"></script>
+<script src="~/js/RolesJs/Roles.js" type="text/javascript"></script>

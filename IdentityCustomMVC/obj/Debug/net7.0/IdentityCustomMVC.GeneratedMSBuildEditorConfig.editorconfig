@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/IncludeInRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xJbmNsdWRlSW5Sb2xlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -32,12 +36,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xMaXN0Um9sZXNQYXJ0aWFsLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/ListUpdateMembersRolesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xMaXN0VXBkYXRlTWVtYmVyc1JvbGVzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/ListUpdateNonMembersRolesPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xMaXN0VXBkYXRlTm9uTWVtYmVyc1JvbGVzUGFydGlhbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/RemoveOfRole.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xSZW1vdmVPZlJvbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminUser/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Vc2VyXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminUser/ListUsersPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Vc2VyXExpc3RVc2Vyc1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/Admin/Index.cshtml]

@@ -42,11 +42,29 @@
             <!-- Left navbar links -->
             <div class="container-fluid">
                 <ul class="navbar-nav">
+                  
                     <li class="nav-item">
                         <a class="nav-link" data-widget="pushmenu" id="menupushAdmin" href="#" role="button"><i class="fas fa-bars"></i></a>
                     </li>
+                   
+                   @* <li class="nav-item">                       
+                        <div class="dropdown show ml-3  mt-2">
+                            <a class="text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Gerenciar Role
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <a class="dropdown-item" href="#">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminRoles" asp-action="IncludeInRole">Incluir na Role</a>
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Remover da Role</a>
+                                </a>
+                            </div>
+                        </div>                        
+                    </li>*@
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Gerenciar Role</a>
+                        <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminRoles" asp-action="Index">Gerenciar Roles</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="Admin" asp-controller="AdminUser" asp-action="Index">Gerenciar Usuarios</a>
@@ -107,12 +125,12 @@
                         </li>
                     </ul>
                 </nav>
-               
+
             </div>
             <!-- /.sidebar -->
 
         </aside>
-       
+
         @RenderBody()
 
         <footer class="main-footer">
