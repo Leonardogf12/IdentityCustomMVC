@@ -49,7 +49,7 @@ builder.Services.AddScoped<IAccount, AccountRepository>();
 #region INJECAO DE DEPENDENCIA E SERVICOS DE ENVIOS DE EMAILS
 
 
-//*CONFIGURANDO VIDA UTIL DO TOKEN
+//*CONFIGURANDO VIDA UTIL DO TOKEN PARA REDEFINICAO DE SENHA.
 builder.Services.Configure<DataProtectionTokenProviderOptions>(opt =>
    opt.TokenLifespan = TimeSpan.FromHours(2));
 
@@ -75,8 +75,6 @@ builder.Services.Configure<FormOptions>(o => {
     o.MemoryBufferThreshold = int.MaxValue;
 });
 
-
-//Senha do app = Nome:EmailService | Senha:ywwzbtnnliwhnxdq
 
 #endregion
 
