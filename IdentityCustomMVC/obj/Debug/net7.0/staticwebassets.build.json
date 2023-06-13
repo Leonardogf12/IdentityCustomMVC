@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fX1Yjxhh9U9HkHtZheUj7BRsj6ibd0edNRz29BLZnLM=",
+  "Hash": "ahf1PTOFyKlw9OAUTPjuAn8bQk1Om8xf7FcDeE23pyk=",
   "Source": "IdentityCustomMVC",
   "BasePath": "_content/IdentityCustomMVC",
   "Mode": "Default",
@@ -1137,6 +1137,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\img\\user.png"
+    },
+    {
+      "Identity": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\ProductsJs\\Products.js",
+      "SourceId": "IdentityCustomMVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\",
+      "BasePath": "_content/IdentityCustomMVC",
+      "RelativePath": "js/ProductsJs/Products.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\ProductsJs\\Products.js"
     },
     {
       "Identity": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\RolesJs\\Roles.js",

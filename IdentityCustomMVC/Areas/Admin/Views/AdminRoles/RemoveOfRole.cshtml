@@ -1,10 +1,19 @@
 ﻿@using IdentityCustomMVC.Entities;
 @model RoleEdit
-
+@{
+    ViewData["Title"] = "Remover da Role";
+}
 <div class="content-wrapper">
     <div class="content">
-
-        <h1 class="text-center mb-5">Remover da Role <b>@Model.Role.Name</b></h1>
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-12">
+                    <div class="col-sm-12">
+                        <h1 class="text-center">@ViewData["Title"] <b>@Model.Role.Name</b></h1>
+                    </div>
+                </div>
+            </div>
+        </section>
         <div class="container-fluid">
             <div class="card">
                 <div class="card-body">
@@ -19,8 +28,7 @@
                             <a asp-action="Index" class="btn bg-gradient-secondary">Cancelar</a>
                         </div>
                         <div class="row">
-                            <div class="col-12">
-                                <h2 class="mt-3">Remover da Role</h2>
+                            <div class="col-12">                              
                                 <div class="card">
                                     <div class="card-body" id="listUpdateMembersRolesRegisters">
                                         <partial name="ListUpdateMembersRolesPartial" model="Model" />

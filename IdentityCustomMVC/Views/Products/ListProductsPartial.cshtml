@@ -1,1 +1,55 @@
-﻿
+﻿@model IEnumerable<IdentityCustomMVC.Entities.Product>
+
+<table id="dtProducts" class="table table-hover">
+    <thead>
+        <tr>
+            <th class="p-4">
+                <div class="form-check">
+                    <label class="form-check-label p-2">
+                        <input class="form-check-input" type="checkbox" id="checkAll">
+                        <span class="form-check-sign"></span>
+                    </label>
+                </div>
+            </th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-left">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" id="@item.Id" name="LISTACHECK">
+                            <span class="form-check-sign"></span>
+                        </label>
+                    </div>
+                </td>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+
+                <td>
+                    <div>
+                        <i type="button" class="fas fa-bars" data-toggle="dropdown"></i>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" style="cursor:pointer" asp-action="Edit" asp-route-id="@item.Id">Editar</a></li>
+                            <li><a class="nav-link" style="cursor:pointer" asp-action="Details" asp-route-id="@item.Id">Detalhes</a></li>
+                            @if (User.IsInRole("Master") || User.IsInRole("Admin") || User.IsInRole("Gerente"))
+                            {
+                                <li><a class="nav-link" style="cursor:pointer" onclick="DeleteConfirm('@item.Id')">Excluir</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-action="Delete" asp-route-id="@item.Id" class="nav-link" style="cursor:pointer">Excluir</a></li>
+                            }
+                        </ul>
+                    </div>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

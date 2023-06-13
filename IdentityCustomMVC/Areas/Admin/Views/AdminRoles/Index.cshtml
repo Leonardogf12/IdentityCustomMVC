@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<IdentityRole>
 @{
-    ViewData["Title"] = "Roles";    
+    ViewData["Title"] = "Roles";
 }
 <div class="content-wrapper">
     <div class="content">
@@ -19,7 +19,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="btn-group">
-                                <a asp-action="Create" class="btn bg-gradient-primary">Nova Role</a>                 
+                                <a asp-action="Create" class="btn bg-gradient-primary">Nova Role</a>
                                 <a class="btn bg-gradient-danger" onclick="DeleteRolesIndex()">Excluir</a>
                             </div>
                         </div>
@@ -27,11 +27,15 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body" id="listRolesRegisters">
-                            <partial name="ListRolesPartial" model="Model" />
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body" id="listRolesRegisters">
+                                    <partial name="ListRolesPartial" model="Model" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

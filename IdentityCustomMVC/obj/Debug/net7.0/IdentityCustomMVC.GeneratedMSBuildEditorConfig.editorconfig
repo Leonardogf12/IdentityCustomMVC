@@ -20,10 +20,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Areas/Admin/Views/AdminRoles/IncludeInRole.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQWRtaW5Sb2xlc1xJbmNsdWRlSW5Sb2xlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -118,10 +114,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Views/Products/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Views/Products/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdHNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/PROJETOS/IdentityCustomMVCProject/IdentityCustomMVC/IdentityCustomMVC/Views/Products/Details.cshtml]

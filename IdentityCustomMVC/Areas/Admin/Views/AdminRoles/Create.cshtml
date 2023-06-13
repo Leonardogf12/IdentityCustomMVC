@@ -1,26 +1,37 @@
 ﻿@using IdentityCustomMVC.Areas.Admin.Entities;
 @model IdentityRoleCustom
 
+@{
+    ViewData["Title"] = "Nova Role";
+}
+
 <div class="content-wrapper">
     <div class="content">
-        <h1 class="text-center">Nova Role</h1>
-        <div class="container-fluid">
-        <div class="card">
-            <div class="card-body">
-
-                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-                <form asp-action="Create" method="post">
-                    <div class="form-group">
-                        <label asp-for="Name" class="control-label"></label>
-                        <input asp-for="Name" class="form-control" />
-                        <span asp-validation-for="Name" class="text-danger"></span>
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-12">
+                    <div class="col-sm-12">
+                        <h1 class="text-center">@ViewData["Title"]</h1>
                     </div>
-                    <div class="btn-group">
-                        <button type="submit" class="btn bg-gradient-success">Salvar</button>
-                        <a asp-action="Index" class="btn bg-gradient-danger"> Cancelar</a>
-                    </div>
-                </form>
+                </div>
             </div>
+        </section>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <form asp-action="Create" method="post">
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="btn-group">
+                            <button type="submit" class="btn bg-gradient-success">Salvar</button>
+                            <a asp-action="Index" class="btn bg-gradient-danger"> Cancelar</a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

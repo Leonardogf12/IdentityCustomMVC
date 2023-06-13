@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\img\\user.png"
     },
     {
+      "Id": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\ProductsJs\\Products.js",
+      "PackagePath": "staticwebassets\\js\\ProductsJs\\Products.js"
+    },
+    {
       "Id": "D:\\PROJETOS\\IdentityCustomMVCProject\\IdentityCustomMVC\\IdentityCustomMVC\\wwwroot\\js\\RolesJs\\Roles.js",
       "PackagePath": "staticwebassets\\js\\RolesJs\\Roles.js"
     },

@@ -4,27 +4,41 @@
     ViewData["Title"] = "Detalhe do Produto";
 }
 
-<div class="container">
-<h1 class="text-center mb-5">@ViewData["Title"]</h1>
-    <div class="card">
-        <div class="card-body">         
-            <dl class="row">
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Name):
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Name)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Description):
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Description)
-                </dd>
-            </dl>
-            <div>
-                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
-                <a class="btn btn-danger" asp-action="Index">Cancelar</a>
+<div class="content-wrapper">
+    <div class="content">
+
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-12">
+                    <div class="col-sm-12">
+                        <h1 class="text-center">@ViewData["Title"]</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Name):
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>                        
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Description):
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+                    </dl>
+                    <div class="btn-group">
+                        <a class="btn bg-gradient-primary" asp-action="Edit" asp-route-id="@Model?.Id">Editar</a>
+                        <a class="btn bg-gradient-danger" asp-action="Index">Cancelar</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
